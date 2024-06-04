@@ -88,6 +88,7 @@ def extract_text_from_pdf(pdf_file):
     text = ""
     for page in pdf_reader.pages:
         text += page.extract_text()
+        print("Aqui", text)
     return text
 
 # Função para fazer upload de arquivos para a API Gemini
@@ -110,7 +111,7 @@ def ask_gemini(question, context, temperature, instructions, file_uri):
     }
 
     model = genai.GenerativeModel(
-        model_name="gemini-1.5-pro-latest",
+        model_name="gemini-1.5-flash",
         generation_config=generation_config,
         system_instruction=instructions,
     )
