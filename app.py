@@ -103,8 +103,8 @@ def upload_to_gemini(file_path, mime_type="application/pdf"):
 def ask_gemini(question, context, temperature, instructions, file_uri):
     generation_config = {
         "temperature": temperature,
-        "top_p": 0.95,
-        "top_k": 64,
+        # "top_p": 0.95,
+        # "top_k": 64,
         "max_output_tokens": 8192,
         "response_mime_type": "text/plain",
     }
