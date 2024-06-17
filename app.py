@@ -106,12 +106,12 @@ def ask_gemini(question, context, temperature, instructions, file_uri):
         "temperature": temperature,
         # "top_p": 0.95,
         # "top_k": 64,
-        "max_output_tokens": 8192,
+        # "max_output_tokens": 8192,
         "response_mime_type": "text/plain",
     }
 
     model = genai.GenerativeModel(
-        model_name="gemini-1.5-flash",
+        model_name="gemini-1.5-pro",
         generation_config=generation_config,
         system_instruction=instructions,
     )
