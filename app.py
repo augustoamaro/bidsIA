@@ -4,13 +4,10 @@ import mysql.connector
 from mysql.connector import Error
 import google.generativeai as genai
 
-# Configure a API Gemini
 google_api_key = st.secrets["google"]["google_api_key"]
 genai.configure(api_key=google_api_key)
 
 # Função para autenticação
-
-
 def authenticate(username, password):
     try:
         connection = mysql.connector.connect(
@@ -35,8 +32,6 @@ def authenticate(username, password):
         return False
 
 # Função para obter as instruções e temperatura
-
-
 def get_instructions():
     try:
         connection = mysql.connector.connect(
@@ -60,8 +55,6 @@ def get_instructions():
         return "", 0.7
 
 # Função para salvar as instruções e temperatura
-
-
 def save_instructions(text, temperature):
     try:
         connection = mysql.connector.connect(
@@ -81,8 +74,6 @@ def save_instructions(text, temperature):
         st.write(f"Error: {e}")
 
 # Função para extrair texto de um PDF
-
-
 def extract_text_from_pdf(pdf_file):
     pdf_reader = PdfReader(pdf_file)
     text = ""
@@ -91,15 +82,11 @@ def extract_text_from_pdf(pdf_file):
     return text
 
 # Função para fazer upload de arquivos para a API Gemini
-
-
 def upload_to_gemini(file_path, mime_type="application/pdf"):
     file = genai.upload_file(file_path, mime_type=mime_type)
     return file
 
 # Função para fazer uma pergunta à API Gemini
-
-
 def ask_gemini(question, context, temperature, instructions, file_uri):
     generation_config = {
         "temperature": temperature,
@@ -126,8 +113,6 @@ def ask_gemini(question, context, temperature, instructions, file_uri):
     return response.text
 
 # Interface do Streamlit
-
-
 def main():
     if "authenticated" not in st.session_state:
         st.session_state.authenticated = False
