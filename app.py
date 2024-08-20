@@ -110,7 +110,7 @@ def ask_gemini(question, context, temperature, instructions, file_uri):
     }
 
     model = genai.GenerativeModel(
-        model_name="gemini-1.5-pro",
+        model_name="gemini-1.5-flash",
         generation_config=generation_config,
         system_instruction=instructions,
     )
